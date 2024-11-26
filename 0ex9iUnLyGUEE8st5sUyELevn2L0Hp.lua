@@ -2332,7 +2332,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 
-      return {Label, Title}
+      			return Label, Title
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
 			if desc == "" then
