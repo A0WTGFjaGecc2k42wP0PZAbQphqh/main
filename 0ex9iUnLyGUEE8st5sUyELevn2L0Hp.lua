@@ -2300,6 +2300,7 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			local Label = Instance.new("TextButton")
 			local LabelCorner = Instance.new("UICorner")
 			local Title = Instance.new("TextLabel")
+			local LabelFunc = {}
 
 			Label.Name = "Label"
 			Label.Parent = Container
@@ -2332,7 +2333,11 @@ function Flux:Window(text, bottom,mainclr,toclose)
 			
 			Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
 
-      			return Label, Title
+			function LabelFunc:UpdateText(text)
+				TItle.Text = text
+			end
+
+      		return LabelFunc
 		end
 		function ContainerContent:Textbox(text,desc,disapper,callback)
 			if desc == "" then
@@ -2748,4 +2753,5 @@ function Flux:Window(text, bottom,mainclr,toclose)
 	end
 	return Tabs
 end
+
 return Flux
