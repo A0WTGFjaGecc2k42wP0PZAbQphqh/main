@@ -282,25 +282,26 @@ local function CreateOptions(Frame)
 
     function Options.TextLabel(Title)
         local Container = Utility.new("Frame", {
-            Name = "Switch",
+            Name = "TextLabel",
             Parent = typeof(Frame) == "Instance" and Frame or Frame(),
             BackgroundTransparency = 1,
             Size = UDim2.new(1, 0, 0, 25),
-        }, {
+        }, 
+	{
             Utility.new("TextLabel", {
-                Name = "Title",
-                AnchorPoint = Vector2.new(0, 0.5),
-                BackgroundTransparency = 1,
-                Position = UDim2.new(0, 0, 0.5, 0),
-                Size = UDim2.new(1, 0, 1, 0),
-                Font = Enum.Font.Gotham,
-                Text = Title and tostring(Title) or "TextLabel",
-                RichText = true,
-                TextColor3 = Color3.fromRGB(255, 255, 255),
-                TextSize = 14,
-                TextTransparency = 0.3,
-                TextXAlignment = Enum.TextXAlignment.Left
-            })
+	            	Name = "Title",
+			AnchorPoint = Vector2.new(0, 0.5),
+	                BackgroundTransparency = 1,
+	                Position = UDim2.new(0, 0, 0.5, 0),
+	                Size = UDim2.new(1, 0, 1, 0),
+	                Font = Enum.Font.Gotham,
+	                Text = Title and tostring(Title) or "TextLabel",
+	                RichText = true,
+	                TextColor3 = Color3.fromRGB(255, 255, 255),
+	                TextSize = 14,
+	                TextTransparency = 0.3,
+	                TextXAlignment = Enum.TextXAlignment.Left
+	    }
         })
 
         local Properties = {
