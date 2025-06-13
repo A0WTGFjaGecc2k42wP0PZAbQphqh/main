@@ -279,7 +279,47 @@ end
 -- [ Options ] --
 local function CreateOptions(Frame)
     local Options = {}
-	
+
+    function Options.TextLabel(Title)
+        local Container = Utility.new("Frame", {
+            Name = "Switch",
+            Parent = typeof(Frame) == "Instance" and Frame or Frame(),
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, 0, 0, 25),
+        }, {
+            Utility.new("TextLabel", {
+                Name = "Title",
+                AnchorPoint = Vector2.new(0, 0.5),
+                BackgroundTransparency = 1,
+                Position = UDim2.new(0, 0, 0.5, 0),
+                Size = UDim2.new(1, 0, 1, 0),
+                Font = Enum.Font.Gotham,
+                Text = Title and tostring(Title) or "TextLabel",
+                RichText = true,
+                TextColor3 = Color3.fromRGB(255, 255, 255),
+                TextSize = 14,
+                TextTransparency = 0.3,
+                TextXAlignment = Enum.TextXAlignment.Left
+            })
+        })
+
+        local Properties = {
+            Text = Title and tostring(Title) or "TextLabel";
+        }
+
+        return setmetatable({}, {
+            __index = function(Self, Index)
+                return Properties[Index]
+            end;
+            __newindex = function(Self, Index, Value)
+                if Index == "Text" then
+                    Container.Title.Text = Value and tostring(Value) or "TextLabel"
+                end
+                Properties[Index] = Value
+            end;
+        })
+    end
+
     function Options.Button(Title, ButtonText, Callback)
         local Properties = {
             Title = Title and tostring(Title) or "Button";
@@ -340,7 +380,7 @@ local function CreateOptions(Frame)
             end
         })
     end
-		
+
     function Options.Switch(Title, Callback)
         local Properties = {
             Title = Title and tostring(Title) or "Switch";
